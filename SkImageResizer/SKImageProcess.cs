@@ -47,7 +47,7 @@ namespace SkImageResizer
             }
         }
 
-        public Task ResizeImagesAsync(string sourcePath, string destPath, double scale)
+        public async Task ResizeImagesAsync(string sourcePath, string destPath, double scale)
         {
             if (!Directory.Exists(destPath))
             {
@@ -77,7 +77,7 @@ namespace SkImageResizer
                 data.SaveTo(s);
             })).ToList();
 
-            return Task.WhenAll(taskList);
+            await Task.WhenAll(taskList);
         }
 
         /// <summary>
